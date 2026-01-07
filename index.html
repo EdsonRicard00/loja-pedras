@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Mística | Pulseiras de Pedras Naturais</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Variáveis de Cor (Psicologia da Compra) --- */
+        :root {
+            --primary-color: #2C5F63; /* Deep Teal - Confiança e Natureza */
+            --secondary-color: #D4AF37; /* Dourado - Luxo e Espiritualidade */
+            --action-color: #FF7F50; /* Coral - Desejo e Ação de Compra */
+            --bg-light: #F9F7F1; /* Creme - Orgânico e Suave */
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        /* --- Reset e Estilos Globais --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        h1, h2, h3 { font-family: 'Cinzel Decorative', cursive; color: var(--primary-color); }
+        a { text-decoration: none; transition: 0.3s; }
+        section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+
+        /* --- Botões --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-action {
+            background-color: var(--action-color);
+            color: var(--text-light);
+            box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
+        }
+        .btn-action:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 127, 80, 0.5);
+            background-color: #e66a3e;
+        }
+
+        /* --- Header & Nav --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { font-size: 1.8rem; font-weight: 700; color: var(--primary-color); }
+        .logo span { color: var(--secondary-color); }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav a { color: var(--text-dark); font-weight: 400; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        nav a:hover { color: var(--secondary-color); }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 150px 20px;
+            background: linear-gradient(rgba(44, 95, 99, 0.8), rgba(44, 95, 99, 0.6)), url('https://images.unsplash.com/photo-1615655114865-4cc1bda5901e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); /* Placeholder de imagem mística */
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+        }
+        .hero h1 { color: var(--secondary-color); font-size: 3.5rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.3rem; max-width: 600px; margin: 0 auto 40px; }
+
+        /* --- Seção Interativa: Poderes das Pedras --- */
+        .powers-section { text-align: center; background-color: #fff; border-radius: 20px; padding: 60px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .powers-tabs { display: flex; justify-content: center; gap: 15px; margin-top: 40px; flex-wrap: wrap; }
+        .tab-btn {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Lato';
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary-color);
+            color: var(--text-light);
+        }
+        .powers-content {
+            margin-top: 40px;
+            text-align: left;
+            display: none; /* Esconde por padrão */
+            animation: fadeIn 0.5s ease;
+        }
+        .powers-content.active { display: block; /* Mostra o ativo */ }
+        .powers-content h3 { color: var(--secondary-color); margin-bottom: 15px; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Seção da Coleção (Grid de Produtos) --- */
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        /* Placeholder visual para as imagens das pulseiras */
+        .product-img-placeholder {
+            height: 220px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-style: italic;
+            background-size: cover;
+            background-position: center;
+        }
+        .product-info { padding: 20px; text-align: center; }
+        .product-stone { color: var(--primary-color); font-size: 0.9rem; font-weight: 700; letter-spacing: 1px; }
+        .product-title { margin: 10px 0; font-size: 1.1rem; font-family: 'Lato'; }
+        .product-price { color: var(--secondary-color); font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; display: block;}
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 0 15px 15px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        .add-to-cart:hover { background: var(--secondary-color); color: var(--primary-color); }
+
+        /* --- Footer --- */
+        footer { background: var(--primary-color); color: var(--text-light); padding: 40px; text-align: center; margin-top: 80px; }
+        footer p { opacity: 0.8; font-size: 0.9rem; }
+
+        /* --- Responsividade básica --- */
+        @media (max-width: 768px) {
+            nav { display: none; } /* Simplificação para mobile */
+            .hero h1 { font-size: 2.5rem; }
+            .powers-tabs { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Aura <span>Mística</span></div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#poderes">Poderes das Pedras</a></li>
+                <li><a href="#colecao">Coleção</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>Mais que um acessório, sua energia.</h1>
+        <p>Descubra pulseiras de pedras naturais feitas à mão, conectando você com a vibração da terra.</p>
+        <button class="btn btn-action" onclick="document.getElementById('colecao').scrollIntoView();">Ver Coleção</button>
+    </section>
+
+    <section id="poderes" class="powers-section">
+        <h2>Os Poderes da Natureza</h2>
+        <p>Clique nas pedras abaixo e descubra como elas podem influenciar sua energia.</p>
+        
+        <div class="powers-tabs">
+            <button class="tab-btn active" onclick="openStone(event, 'quartzo-rosa')">Quartzo Rosa</button>
+            <button class="tab-btn" onclick="openStone(event, 'pedra-lua')">Pedra da Lua</button>
+            <button class="tab-btn" onclick="openStone(event, 'pedra-sol')">Pedra do Sol</button>
+            <button class="tab-btn" onclick="openStone(event, 'ametista')">Ametista</button>
+        </div>
+
+        <div id="quartzo-rosa" class="powers-content active">
+            <h3>O Amor Incondicional</h3>
+            <p>Conhecida como a pedra do amor, o Quartzo Rosa abre o chakra do coração para todas as formas de amor: próprio, familiar e romântico. Traz cura interior profunda e paz infinita.</p>
+        </div>
+
+        <div id="pedra-lua" class="powers-content">
+            <h3>Intuição e Novos Começos</h3>
+            <p>Uma pedra de "novos começos", a Pedra da Lua está fortemente ligada à intuição e à energia feminina. Ela acalma as emoções e ajuda a estabilizar ciclos.</p>
+        </div>
+
+        <div id="pedra-sol" class="powers-content">
+            <h3>Alegria e Vitalidade</h3>
+            <p>Com sua energia vibrante, a Pedra do Sol traz luz para situações sombrias. Ela restaura a alegria de viver, aumenta a autoconfiança e estimula o poder pessoal.</p>
+        </div>
+
+        <div id="ametista" class="powers-content">
+            <h3>Proteção e Espiritualidade</h3>
+            <p>Uma pedra extremamente poderosa e protetora, com uma vibração espiritual elevada. A Ametista bloqueia energias negativas e acalma a mente, auxiliando na meditação.</p>
+        </div>
+    </section>
+
+    <section id="colecao">
+        <h2 style="text-align: center; margin-bottom: 40px;">Nossa Coleção Sagrada</h2>
+        
+        <div class="collection-grid">
+            <div class="product-card">
+                <div class="product-img-placeholder" style="background-image: url('https://source.unsplash.com/300x300/?bracelet,pink');"></div>
+                <div class="product-info">
+                    <span class="product-stone">Quartzo Rosa</span>
+                    <h4 class="product-title">Pulseira Amor Próprio</h4>
+                    <span class="product-price">R$ 89,90</span>
+                </div>
+                <button class="add-to-cart" onclick="alert('Produto adicionado ao carrinho (Simulação)')">Eu Quero essa Energia</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-placeholder" style="background-image: url('https://source.unsplash.com/300x300/?moonstone,jewelry');"></div>
+                <div class="product-info">
+                    <span class="product-stone">Pedra da Lua</span>
+                    <h4 class="product-title">Pulseira Intuição Lunar</h4>
+                    <span class="product-price">R$ 95,00</span>
+                </div>
+                <button class="add-to-cart" onclick="alert('Produto adicionado ao carrinho (Simulação)')">Eu Quero essa Energia</button>
+            </div>
+
+             <div class="product-card">
+                <div class="product-img-placeholder" style="background-image: url('https://source.unsplash.com/300x300/?sunstone,bracelet');"></div>
+                <div class="product-info">
+                    <span class="product-stone">Pedra do Sol</span>
+                    <h4 class="product-title">Pulseira Brilho Solar</h4>
+                    <span class="product-price">R$ 92,50</span>
+                </div>
+                <button class="add-to-cart" onclick="alert('Produto adicionado ao carrinho (Simulação)')">Eu Quero essa Energia</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-placeholder" style="background-image: url('https://source.unsplash.com/300x300/?amethyst,bracelet');"></div>
+                <div class="product-info">
+                    <span class="product-stone">Ametista</span>
+                    <h4 class="product-title">Pulseira Transmutação</h4>
+                    <span class="product-price">R$ 89,90</span>
+                </div>
+                <button class="add-to-cart" onclick="alert('Produto adicionado ao carrinho (Simulação)')">Eu Quero essa Energia</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-placeholder" style="background-image: url('https://source.unsplash.com/300x300/?tigerseye,bracelet');"></div>
+                <div class="product-info">
+                    <span class="product-stone">Olho de Tigre</span>
+                    <h4 class="product-title">Pulseira Coragem e Foco</h4>
+                    <span class="product-price">R$ 79,90</span>
+                </div>
+                <button class="add-to-cart" onclick="alert('Produto adicionado ao carrinho (Simulação)')">Eu Quero essa Energia</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-placeholder" style="background-image: url('https://source.unsplash.com/300x300/?aquamarine,bracelet');"></div>
+                <div class="product-info">
+                    <span class="product-stone">Água Marinha</span>
+                    <h4 class="product-title">Pulseira Calma Oceânica</h4>
+                    <span class="product-price">R$ 110,00</span>
+                </div>
+                <button class="add-to-cart" onclick="alert('Produto adicionado ao carrinho (Simulação)')">Eu Quero essa Energia</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-placeholder" style="background-image: url('https://source.unsplash.com/300x300/?citrine,jewelry');"></div>
+                <div class="product-info">
+                    <span class="product-stone">Citrino</span>
+                    <h4 class="product-title">Pulseira Prosperidade</h4>
+                    <span class="product-price">R$ 99,90</span>
+                </div>
+                <button class="add-to-cart" onclick="alert('Produto adicionado ao carrinho (Simulação)')">Eu Quero essa Energia</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-placeholder" style="background-image: url('https://source.unsplash.com/300x300/?onyx,bracelet');"></div>
+                <div class="product-info">
+                    <span class="product-stone">Ônix</span>
+                    <h4 class="product-title">Pulseira Escudo Protetor</h4>
+                    <span class="product-price">R$ 75,00</span>
+                </div>
+                <button class="add-to-cart" onclick="alert('Produto adicionado ao carrinho (Simulação)')">Eu Quero essa Energia</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-placeholder" style="background-image: url('https://source.unsplash.com/300x300/?crystal,clear,bracelet');"></div>
+                <div class="product-info">
+                    <span class="product-stone">Quartzo Cristal</span>
+                    <h4 class="product-title">Pulseira Purificação Master</h4>
+                    <span class="product-price">R$ 85,00</span>
+                </div>
+                <button class="add-to-cart" onclick="alert('Produto adicionado ao carrinho (Simulação)')">Eu Quero essa Energia</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-placeholder" style="background-image: url('https://source.unsplash.com/300x300/?amazonite,jewelry');"></div>
+                <div class="product-info">
+                    <span class="product-stone">Amazonita</span>
+                    <h4 class="product-title">Pulseira Fluxo e Verdade</h4>
+                    <span class="product-price">R$ 89,90</span>
+                </div>
+                <button class="add-to-cart" onclick="alert('Produto adicionado ao carrinho (Simulação)')">Eu Quero essa Energia</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Aura Mística © 2023. Feito com intenção e código limpo.</p>
+    </footer>
+
+    <script>
+        function openStone(evt, stoneName) {
+            // 1. Esconde todos os conteúdos
+            var i, powersContent, tabBtn;
+            powersContent = document.getElementsByClassName("powers-content");
+            for (i = 0; i < powersContent.length; i++) {
+                powersContent[i].classList.remove("active");
+            }
+
+            // 2. Remove a classe 'active' de todos os botões
+            tabBtn = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtn.length; i++) {
+                tabBtn[i].classList.remove("active");
+            }
+
+            // 3. Mostra o conteúdo atual e marca o botão clicado como ativo
+            document.getElementById(stoneName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
